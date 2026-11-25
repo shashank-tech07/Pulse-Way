@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Inter", system-ui, -apple-system, sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --color-navy-deep: #0B1F3A;
+  --color-navy-surface: #112A4C;
+  --color-navy-elevated: #173763;
+  --color-teal-electric: #00B4A6;
+  --color-coral-warm: #FF6B57;
+}
+
+@layer base {
+  html {
+    background-color: #0B1F3A;
+    color: #F8FAFC;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: #0B1F3A;
+    color: #F8FAFC;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* GPU-composited motion performance hints */
+.motion-gpu {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Subtle teal glow for highlighted hero sections */
+.section-highlight {
+  box-shadow:
+    0 0 20px rgba(0, 180, 166, 0.08),
+    0 0 60px rgba(0, 180, 166, 0.04),
+    inset 0 1px 0 rgba(0, 180, 166, 0.1);
+  border-color: #1A5B6E !important;
+}
+
+/* Pulsing glow keyframes for CTA sections */
+@keyframes section-glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 180, 166, 0.08), 0 0 60px rgba(0, 180, 166, 0.04), inset 0 1px 0 rgba(0, 180, 166, 0.1); }
+  50% { box-shadow: 0 0 28px rgba(0, 180, 166, 0.12), 0 0 80px rgba(0, 180, 166, 0.06), inset 0 1px 0 rgba(0, 180, 166, 0.15); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .section-highlight-pulse {
+    animation: section-glow-pulse 4s ease-in-out infinite;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom sleek scrollbar aligned with Deep Clinical Navy */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #08172B;
+}
+::-webkit-scrollbar-thumb {
+  background: #1C3E6E;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00B4A6;
+}
